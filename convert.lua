@@ -3,13 +3,11 @@ local file = assert(io.open(filename, "r"))
 local content = file:read("*a")
 io.close(file)
 
-local pattern = "(%d+) ([^ ]+) (.-)[\n]*(.-)[\n](%d+) %| (%d.%d[%d]?)[%a ]*[\n]"
+local pattern = "(%d+) ([^ ]+) (.-)[\n](%d+) %| (%d.%d[%d]?)[%a ]*[\n]"
 
-for index, word, type, collocates, raw_freq, dispersion in string.gmatch(content, pattern) do
-    -- print("\t", word)
-    print("Index: ", index, word)
-    -- print("Type: ", type)
-    -- print("Collocates:\n", collocates)
+for index, word, collocates, raw_freq, dispersion in string.gmatch(content, pattern) do
+    print(string.format("### %s", word))
+    -- print(string.format("```\n%s\n```", collocates))
     -- print("Raw frequency: ", raw_freq)
     -- print("Dispersion: ", dispersion)
 end
